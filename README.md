@@ -1,6 +1,11 @@
 # BlindEDR-TCP
 
-本程序通过调用底层 NtDeviceIoControlFile 向 \\.\Nsi 网络堆栈接口发送控制命令，结合自定义结构体 NSI_SET_PARAMETERS_EX 和硬编码 TCP 模块 GUID，可精准关闭指定 PID 的 ESTABLISHED 状态连接。利用 GetTcpTable2 获取 TCP 表，搭配 CreateToolhelp32Snapshot 枚举进程，配合 NSI 接口实现免驱动断连，使用go的概念性实现
+- 使用 Go 调用 `NtDeviceIoControlFile` 操作 `\\.\Nsi` 网络设备接口
+- 构造 `NSI_SET_PARAMETERS_EX` 与 TCP GUID 实现连接控制
+- 通过 `GetTcpTable2` 获取 TCP 表，筛选 ESTABLISHED 状态
+- 利用 `CreateToolhelp32Snapshot` 动态获取指定进程 PID
+- 全流程基于合法 API，绕过用户态防护与驱动签名限制
+- 无需驱动加载，具备较强隐蔽性与免杀特性
 
 原文链接：https://mp.weixin.qq.com/s/HuYc8sUzZsYjMdTliItX_Q
 
