@@ -4,8 +4,6 @@
 - 构造 `NSI_SET_PARAMETERS_EX` 与 TCP GUID 实现连接控制
 - 通过 `GetTcpTable2` 获取 TCP 表，筛选 ESTABLISHED 状态
 - 利用 `CreateToolhelp32Snapshot` 动态获取指定进程 PID
-- 全流程基于合法 API，绕过用户态防护与驱动签名限制
-- 无需驱动加载，具备较强隐蔽性与免杀特性
 
 原文链接：https://mp.weixin.qq.com/s/HuYc8sUzZsYjMdTliItX_Q
 
